@@ -50,8 +50,10 @@ function NavBar() {
             >
               <NavDropdown.Item href="#">Metallica</NavDropdown.Item>
               <NavDropdown.Item href="#">AC/DC</NavDropdown.Item>
-              <NavDropdown.Item href="#">Queen</NavDropdown.Item>
-              <NavDropdown.Item href="#">Pink Floyd</NavDropdown.Item>
+              <NavDropdown.Item href="#">Sylvania</NavDropdown.Item>
+              <NavDropdown.Item href="#">Linkin Park</NavDropdown.Item>
+              <NavDropdown.Item href="#">Mago de Oz</NavDropdown.Item>
+              <NavDropdown.Item href="#">Feuerschwanz</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#">Ver todos</NavDropdown.Item>
             </NavDropdown>
