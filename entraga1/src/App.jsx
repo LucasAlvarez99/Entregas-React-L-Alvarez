@@ -1,12 +1,17 @@
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
+import Footer from "./components/Footer";
 import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer greeting="¡Bienvenido a impío a las puertas del Olimpo!" />
+      <main className="flex-grow-1" style={{ marginTop: "80px" }}>
+        <ItemListContainer greeting="¡Bienvenido Impío a Las Puertas del Olimpo!" />
+      </main>
+      <Footer />
     </>
   );
 }

@@ -1,46 +1,72 @@
 import { useState } from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import CartWidget from "./CartWidget";
-import "../index.css"; // importamos el CSS general
+import "../index.css";
 
 function NavBar() {
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const toggleDropdown = () => setShowDropdown(!showDropdown);
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <nav className="navbar">
-      <img src="../logoTicket.png" alt="Logo Tienda" className="logo-img" />
+    <Navbar
+      expand="lg"
+      variant="dark"
+      className="custom-navbar"
+      fixed="top"
+      expanded={expanded}
+    >
+      <Container>
+        {/* LOGO */}
+        <Navbar.Brand href="#" className="d-flex align-items-center">
+          <img
+            src="/logoTicket.png"
+            alt="Logo"
+            height="42"
+            className="me-2 navbar-logo"
+          />
+          <span className="fw-bold navbar-title">Las Puertas del Olimpo</span>
+        </Navbar.Brand>
 
-      <ul className="nav-links">
-        <li><a href="#">Inicio</a></li>
+        {/* TOGGLE BUTTON */}
+        <Navbar.Toggle
+          aria-controls="navbar-nav"
+          onClick={() => setExpanded(expanded ? false : "expanded")}
+        />
 
-        <li className="dropdown">
-          <button onClick={toggleDropdown} className="dropdown-btn">
-            Entradas ▾
-          </button>
+        {/* LINKS */}
+        <Navbar.Collapse id="navbar-nav">
+          <Nav className="ms-auto align-items-lg-center">
+            <Nav.Link href="#" onClick={() => setExpanded(false)}>
+              Inicio
+            </Nav.Link>
 
-          {showDropdown && (
-            <ul className="dropdown-menu">
-              <li><a href="#">Metallica</a></li>
-              <li><a href="#">AC/DC</a></li>
-              <li><a href="#">Queen</a></li>
-              <li><a href="#">The Beatles</a></li>
-              <li><a href="#">Linkin Park</a></li>
-              <li><a href="#">Rata Blanca</a></li>
-              <li><a href="#">Glory Hammer</a></li>
-              <li><a href="#">Avenged Sevenfold</a></li>
-              <li><a href="#">Molotov</a></li>
-              <li><a href="#">HammerFall</a></li>
-              <li><a href="#">Feuerschwanz</a></li>  
-            </ul>
-          )}
-        </li>
+            <NavDropdown
+              title="Productos"
+              id="productos-dropdown"
+              menuVariant="dark"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <NavDropdown.Item href="#">Metallica</NavDropdown.Item>
+              <NavDropdown.Item href="#">AC/DC</NavDropdown.Item>
+              <NavDropdown.Item href="#">Queen</NavDropdown.Item>
+              <NavDropdown.Item href="#">Pink Floyd</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#">Ver todos</NavDropdown.Item>
+            </NavDropdown>
 
-        <li><a href="#">Contacto</a></li>
-      </ul>
+            <Nav.Link href="#" onClick={() => setExpanded(false)}>
+              Contacto
+            </Nav.Link>
 
-      <CartWidget />
-    </nav>
+            <div className="ms-lg-3 mt-3 mt-lg-0">
+              <CartWidget />
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
